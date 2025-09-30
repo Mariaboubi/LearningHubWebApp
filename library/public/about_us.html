@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ποιοι Είμαστε - Ομάδα Ανάπτυξης της υπηρεσίας e-learning">
+    <title>About us - Sky is the limit</title>
+    <link href="images/logo.png" rel="shortcut icon" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.7/dist/handlebars.min.js"></script>
+    <script src="js/main.js"></script>
+
+</head>
+<body>
+    <!-- Κεφαλίδα -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png">
+                <span class="logo-text">
+                    <h1>Sky is the <br> limit</h1>
+                </span>
+            </div>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown" id="dynamic-categories">
+                    <a href="#">Cources</a>
+                    <ul class="dropdown-content"></ul>
+                </li>
+                <li><a class="current-page" href="about_us.html">About us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+        <main id="about-us">
+            <section>
+                <h2>Η ΟΜΑΔΑ ΜΑΣ</h2>
+                <div class="team-members">
+                    <!-- Μέλος 1 -->
+                    <div class="team-member">
+                        <img src="images/boo.png" alt="Μαρία">
+
+                        <h3>Μαρία Μπουμπή</h3>
+                        <p><strong>Email:</strong> <a href="mailto:p3210135@aueb.gr">p3210135@aueb.gr</a></p>
+                        <p><strong>Τηλέφωνο:</strong> +30 695 5385730</p>
+                        <p>Φοιτήτρια του Τμήματος Πληροφορικής, με εξειδίκευση στην ανάπτυξη λογισμικού και εμπειρία σε ατομικά και ομαδικά έργα. Με γνώσεις σε γλώσσες προγραμματισμού, όπως Python, Java, SQL και C++, καθώς και σε τεχνολογίες ανάπτυξης ιστοσελίδων και εφαρμογών, όπως HTML, CSS και JavaScript. Εξοικειωμένη με εργαλεία διαχείρισης έργων και με έμφαση στην επίλυση προβλημάτων και τον ποιοτικό έλεγχο κώδικα.</p>
+                    </div>
+
+                    <!-- Μέλος 2 -->
+                    <div class="team-member">
+                        <img src="images/tsibo.jpeg" alt="Γιώργος">
+                        <h3>Γιώργος Τσιμπόκας </h3>
+                        <p><strong>Email:</strong> <a href="mailto:p3210207@aueb.gr">p3210207@aueb.gr</a></p>
+                        <p><strong>Τηλέφωνο:</strong> +30 697 4202995</p>
+                        <p>Φοιτητής του Τμήματος Πληροφορικής, με ικανότητα ανάπτυξης λογισμικού και εμπειρία σε έργα τόσο ατομικά όσο και ομαδικά. Με γνώσεις σε γλώσσες προγραμματισμού, όπως Python, Java, SQL και C++, με εξοικείωση σε τεχνολογίες ανάπτυξης ιστοσελίδων και εφαρμογών, όπως HTML, CSS, JavaScript.</p>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer>
+
+            <h4>Contact Us</h4> 
+        
+            <ul>
+                <li>
+                    <a href="https://www.google.com/maps/place/%CE%9F%CE%B9%CE%BA%CE%BF%CE%BD%CE%BF%CE%BC%CE%B9%CE%BA%CF%8C+%CE%A0%CE%B1%CE%BD%CE%B5%CF%80%CE%B9%CF%83%CF%84%CE%AE%CE%BC%CE%B9%CE%BF+%CE%91%CE%B8%CE%B7%CE%BD%CF%8E%CE%BD/@37.994042,23.7306227,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1a2ccc0f74c4d:0x98bfad208765bc87!8m2!3d37.994042!4d23.7328114" target="_blank">
+                        76 Patission Str., 104.34 Athens, Greece</a>
+                </li>
+                <li>Phone: +30 210 8203265</li>
+                <li>E-mail: 
+                    <a href="mailto:p3210135@aueb.gr">p3210135@aueb.gr</a>
+                </li>
+                <li>
+                    <a href="mailto:p3210207@aueb.gr">p3210207@aueb.gr</a>
+                </li>
+                <li>
+                    <i><br>Copyright &copy; 2024 - Athens University Of Economics And Business - 4ο έτος πληροφορικής</i>
+                </li>
+            </ul>
+
+            <table>  
+                    <a href="https://www.facebook.com/auebgreece/" target="_blank"><img class="socialmedia" src="images/facebook.png" ></a>
+                    <a href="https://twitter.com/AUEB?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank"><img class="socialmedia" src="images/twitter.png"></a>
+                    <a href="https://www.aueb.gr/el/contactsopa" target="_blank"><img class="socialmedia" src="images/email.png" ></a>
+                    <a href="https://www.instagram.com/aueb.gr/?hl=el" target="_blank"><img class="socialmedia" src="images/instagram.png" > </a>
+            </table> 
+            
+        </footer> 
+</body>
+</html>

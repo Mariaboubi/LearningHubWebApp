@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="el">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="E-learning shop">
+    <title>Cources - Sky is the limit</title>
+    <link href="images/logo.png" rel="shortcut icon" type="image/png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.7/dist/handlebars.min.js"></script>
+
+    <script id="learning-items-template" type="text/x-handlebars-template">
+        {{#each items}}
+        <div class="subject-container">
+
+            <img src="{{image}}" alt="{{title}}">
+           <ul>
+            <li><h4>{{title}}</h4></li>
+            <li><p>{{description}}</p></li>
+            <li>Τιμή: {{cost}}€</li>
+            {{#if author}}
+            <li>Συγγραφέας: {{author}}</li>
+            <li>Εκδότης: {{publisher}}</li>
+            <li>Ημερομηνία Έκδοσης: {{publicationDate}}</li>
+            {{/if}}
+            <li><a href="{{link}}" target="_blank">More info</a></li>
+            <li><button class="cart-button" onclick="addToCart('{{id}}', '{{title}}', '{{cost}}', '{{type}}')">
+                <img src="images/cart-blue.png">
+            </button>
+
+            
+            <div class="cart-message"></div>
+
+
+        </li>
+        </ul>
+        </div>
+        {{/each}}
+    </script>
+
+    <script src="js/main.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="images/logo.png">
+                <span class="logo-text">
+                    <h1>Sky is the <br> limit</h1>
+                </span>
+            </div>
+            <ul class="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown" id="dynamic-categories">
+                    <a href="#" class="current-page">Cources</a>
+                    <ul class="dropdown-content"></ul>
+                </li>
+                <li><a href="about_us.html">About us</a></li>
+                <li>
+                    <a id="cart-link" href="#">Cart</a>
+                </li>
+                
+            </ul>
+
+        </nav>
+
+    </header>
+
+    <main class="main-courses">
+        <aside id="form_body">
+
+            <form id="registration-form">
+                <div class="form_title">
+                    <img id="form_img" src="images/open-book.png" alt="Book image">
+                    <h2>Log in</h2>
+                </div>
+
+                <fieldset>
+                    <legend>Στοιχεία Ταυτοποίησης</legend>
+                    <label for="username"> Username:</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="password"> Password:</label>
+                    <div class="password-field">
+                        <input type="password" id="password" name="password" required>
+                        <button type="button" class="toggle-password"
+                            onclick="togglePasswordVisibility('password', this)">
+                            <img src="images/invisible.png" alt="Show Password">
+                        </button>
+                    </div>
+
+                </fieldset>
+
+                <button class="login-button" type="submit">Log in</button>
+                <div id="login-message"></div>
+            </form>
+
+        </aside>
+        <h1 id="category-title"></h1>
+        <div id="learning-items-container" class="subject-list"></div>
+    </main>
+
+    <footer>
+
+        <h4 id="contact_us">Contact Us</h4>
+
+        <ul>
+            <li>
+                <a href="https://www.google.com/maps/place/%CE%9F%CE%B9%CE%BA%CE%BF%CE%BD%CE%BF%CE%BC%CE%B9%CE%BA%CF%8C+%CE%A0%CE%B1%CE%BD%CE%B5%CF%80%CE%B9%CF%83%CF%84%CE%AE%CE%BC%CE%B9%CE%BF+%CE%91%CE%B8%CE%B7%CE%BD%CF%8E%CE%BD/@37.994042,23.7306227,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1a2ccc0f74c4d:0x98bfad208765bc87!8m2!3d37.994042!4d23.7328114"
+                    target="_blank">
+                    76 Patission Str., 104.34 Athens, Greece</a>
+            </li>
+            <li>Phone: +30 210 8203265</li>
+            <li>E-mail:
+                <a href="mailto:p3210135@aueb.gr">p3210135@aueb.gr</a>
+            </li>
+            <li>
+                <a href="mailto:p3210207@aueb.gr">p3210207@aueb.gr</a>
+            </li>
+            <li>
+                <i><br>Copyright &copy; 2024 - Athens University Of Economics And Business - 4ο έτος πληροφορικής</i>
+            </li>
+        </ul>
+
+        <table>
+            <a href="https://www.facebook.com/auebgreece/" target="_blank"><img class="socialmedia"
+                    src="images/facebook.png"></a>
+            <a href="https://twitter.com/AUEB?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                target="_blank"><img class="socialmedia" src="images/twitter.png"></a>
+            <a href="https://www.aueb.gr/el/contactsopa" target="_blank"><img class="socialmedia"
+                    src="images/email.png"></a>
+            <a href="https://www.instagram.com/aueb.gr/?hl=el" target="_blank"><img class="socialmedia"
+                    src="images/instagram.png"> </a>
+        </table>
+
+    </footer>
+
+</body>
+
+</html>

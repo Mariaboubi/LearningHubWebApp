@@ -1,0 +1,722 @@
+/* 
+Κανονικοποιεί το πλάτος των στοιχείων, αποτρέποντας την υπέρβαση του container. 
+*/
+* {
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Δημιουργεί grid layout με 3 σειρές και 3 στήλες για τη βασική δομή της σελίδας και ρύθμιση βασικού στιλ για το σώμα.  */
+body {
+    margin: 0;
+    font-family: "Playfair Display", serif;
+    font-style: normal;
+    background-color: rgba(226, 218, 218, 0.877);
+    flex-direction: column;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: minmax(100px, auto) 1fr minmax(100px, auto);
+}
+
+/* Χρησιμοποιεί flexbox για την οργάνωση του περιεχομένου στο κέντρο και καταλαμβάνει την 2η γραμμή και στήλη της σελίδας */
+main {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    margin-bottom: 50PX;
+    grid-row: 2/3;
+    padding: 20px;
+    position:relative;
+}
+
+/* Το header εκτείνεται σε όλες τις στήλες και στην 1η γραμμή*/
+header {
+    grid-row: 1/2;
+}
+
+/* 
+    Κεντράρει τους τίτλους για καλύτερη αισθητική και συνοχή. 
+*/
+h1,
+h2 {
+    margin-bottom: 15px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* 
+    Εφαρμόζει ειδική γραμματοσειρά, στιλ και βάρος για τους δευτερεύοντες τίτλους. 
+*/
+h2 {
+    margin-left: 15px;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* Κεντράρει το κείμενο και ρυθμίζει το line height */
+p {
+    text-align: center;
+    font-size: large;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+a{
+    color: #4FADFE;
+}
+
+/* Navigation */
+
+/* Χρήση flexbox για την οριζόντια διάταξη του μενού */
+nav {
+    background: linear-gradient(to right, #2c4152, #7aa4c9);
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Δημιουργεί flexbox για το μενού ώστε να υποστηρίζει wrap και ορίζει στυλ για τη λίστα του μενού, με ιδιαίτερη γραμματοσειρά.  */
+.navbar {
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    font-family: "Kanit", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* 
+    Τοποθετεί τα στοιχεία του μενού σε οριζόντια διάταξη με απόσταση μεταξύ τους. 
+*/
+.navbar>li {
+    margin: 20px;
+    position: relative;
+}
+
+/* 
+    Ορίζει το βασικό στιλ για τους συνδέσμους του μενού. 
+*/
+.navbar>li>a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* 
+    Καθορίζει την αλλαγή εμφάνισης όταν γίνεται hover
+*/
+.navbar>li>a:hover {
+    background-color: #5e5e5e;
+    border-radius: 5px;
+    transform: scale(1.1);
+}
+
+/* 
+    Στυλ για τον σύνδεσμο της τρέχουσας σελίδας στο μενού
+*/
+nav .navbar .current-page {
+    color: #4FADFE;
+}
+
+/* 
+    Εφαρμόζει συγκεκριμένο χρώμα (#0088ff) για να ξεχωρίζει η υποσελίδα που είναι ενεργή. 
+    Βοηθά τον χρήστη να γνωρίζει σε ποια ενότητα της σελίδας βρίσκεται. 
+*/
+#current-subpage {
+    color: #0088ff;
+}
+
+/* 
+    Ρυθμίζει την εμφάνιση του dropdown με animation,εμφανιζεται υπολιστά για κρυμμένες σελίδες. 
+*/
+.dropdown-content {
+    z-index: 1;
+    display: none;
+    position: absolute;
+    left: -5%;
+    background-color: #5e5e5e;
+    list-style-type: none;
+    padding: 0;
+    min-width: 15em;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* 
+    Ορίζει βασικό στυλ για τους συνδέσμους του dropdown μενού. 
+*/
+.dropdown-content a {
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s ease, padding-left 0.3s ease;
+}
+
+/* 
+    Ορίζει βασικό στυλ για τους συνδέσμους του dropdown μενού. 
+*/
+.dropdown-content a:hover {
+    background-color: #555;
+    padding-left: 25px;
+    color: #4FADFE;
+
+}
+
+/* 
+    Εμφανίζει το dropdown μενού όταν ο χρήστης κάνει hover. 
+    */
+.dropdown:hover .dropdown-content {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: dropdown-slide 0.4s ease forwards;
+}
+
+/* 
+    Δημιουργεί animation για την εμφάνιση του dropdown. 
+*/
+@keyframes dropdown-slide {
+    0% {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Στυλ για το κουμπί εγγραφής (sign-up) */
+.sign-up {
+    background: linear-gradient(
+        to right,
+        rgba(4, 13, 33, 1),
+        rgba(84, 141, 255, 1)
+    );
+    border-radius: 5px; 
+    font-size: 16px; 
+    text-align: center; 
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Logo */
+
+/* Χρήση flexbox για στοίχιση του λογότυπου και ορισμός εφέ zoom με ομαλή μετάβαση */
+.logo {
+    display: flex;
+    margin-left: 2%;
+    align-items: center;
+    color: white;
+    transition: transform 0.6s ease;
+}
+
+/* 
+    Καθορίζει το μέγεθος και την τοποθέτηση της εικόνας του λογοτύπου. 
+*/
+.logo img {
+    width: 50%;
+    height: auto;
+}
+
+/* 
+    Ορίζει το στυλ του κειμένου που συνοδεύει το λογότυπο.
+*/
+.logo-text {
+    color: white;
+    margin-left: 10px;
+    font-size: 1.2em;
+    letter-spacing: 0.05em;
+    font-style: italic;
+    text-shadow: 1px 5px 6px rgba(0, 0, 0, 1);
+    text-align: center;
+}
+
+/* 
+    Προσθέτει ένα zoom effect στο λογότυπο όταν ο χρήστης περνάει τον δείκτη από πάνω. 
+ */
+.logo:hover {
+    transform: scale(1.04);
+}
+
+
+/* footer */
+
+/* Το footer καταλαμβάνει όλες τις στήλες και την 3η γραμμή και ορίζει στυλ με gradient φόντο, στοίχιση και περιθώρια */
+footer {
+    grid-row: 3/4;
+    background: linear-gradient(to left, #2c4152, #7aa4c9);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* 
+    Αφαιρεί τα bullets από τη λίστα στο footer
+*/
+footer ul {
+    list-style-type: none;
+}
+
+/* 
+    Εφαρμόζει στυλ στους συνδέσμους του υποσέλιδου. 
+*/
+footer a {
+    text-decoration: none;
+}
+
+/* 
+    Καθορίζει την εμφάνιση των συνδέσμων όταν ο χρήστης κάνει hover. 
+*/
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* 
+    Ορίζει στυλ για τους πίνακες που βρίσκονται στο footer.
+*/
+footer table {
+    width: 60%;
+    font-size: 90%;
+}
+
+/* 
+    Ρυθμίζει το μέγεθος και την ευθυγράμμιση των εικονιδίων social media με εφέ hover. 
+*/
+.socialmedia {
+    width: 40px;
+    height: auto;
+    float: right;
+    margin-top: -35px;
+    justify-content: space-between;
+    padding: 2px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.socialmedia:hover {
+    transform: scale(1.1);
+}
+
+
+/* INDEX */
+
+/* #categories-template {
+    display: flex;
+    flex-direction: column;
+} */
+
+.categories{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    margin-top:50px
+}
+
+
+/* Κάρτες κατηγοριών */
+.category-card {
+    flex: 1 1 440px;
+    text-align: center;
+    align-items: center;
+    background-color: rgba(237, 232, 232, 0.877);
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 0 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    /* transform: scale(1.02); */
+    box-shadow: 0px 4px 10px rgb(61, 32, 228);
+}
+
+/* Εικόνες κατηγοριών */
+.category-card img {
+    width: 10%;
+}
+
+.category-card a{
+    text-decoration: none;
+}
+
+.aaa{
+    transition: transform 0.5s ease, box-shadow 0.3s ease;  
+}
+.aaa:hover{
+    transform: scale(1.04);
+}
+
+/* Τίτλοι κατηγοριών */
+.category-card h2 {
+    font-size: 1.5em;
+    color:black;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Λίστα υποκατηγοριών */
+.subcategory-list {
+    list-style: none;
+    padding: 10px;
+
+}
+
+.subcategory-list li {
+    margin: 5px 0;
+}
+
+.subcategory-list li a {
+    text-decoration: none;
+    color: #808080;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.subcategory-list li a:hover {
+    color: black;
+}
+
+/*COURCES*/
+.subject-list {
+    margin: 20px;
+    list-style: none;
+}
+
+.subject-list ul{
+    list-style: none;
+    text-align: center;
+}
+.subject-list li{
+    margin-bottom: 10px;
+}
+/* Ορίζει το στυλ για τους τίτλους των θεμάτων στη λίστα. */
+.subject-list h4 {
+    font-size: large;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* 
+    Δημιουργεί ένα κουτί για το κάθε θέμα με γραμμή κάτω. */
+.subject-container {
+    display: flex;
+    border-bottom: 0.3px solid #000000;
+    padding: 5%;
+    margin-bottom: 20px;
+}
+
+/* Ορίζει το στυλ για τις εικόνες μέσα στο κάθε θέμα. */
+.subject-container img {
+    float: left;
+    width: 20%;
+    max-height: 15em;
+    margin-right: 20px;
+    margin-top: 50px;
+    height: auto;
+}
+
+.subject-container ul {
+    margin-right: 40px;
+}
+
+
+.features-table {
+    width: 20vw;
+    max-height: 10vw;
+    border-collapse: collapse;
+    margin-top: 50px;
+    font-size: 14px;
+}
+
+.features-table th,
+.features-table td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
+}
+
+.features-table th {
+    background-color: #658aea;
+    font-weight: bold;
+}
+
+/* ABOUT US*/
+/* Τοποθετεί το about-us σε όλες τις στήλες του grid και ευθυγραμμίζει το περιεχόμενο στο κέντρο */
+#about-us {
+    
+    text-align: center;
+    margin-top: 50px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Χρησιμοποιεί flexbox για τη διάταξη των μελών της ομάδας σε γραμμή με ομοιόμορφη κατανομή */
+.team-members {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+/* Στυλ για κάθε μέλος της ομάδας */
+.team-member {
+    background-color: rgba(237, 232, 232, 0.9);
+    border: 3px solid transparent;
+    padding: 20px;
+    width: 35%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Κατά το hover, εφαρμόζεται μεγέθυνση, ισχυρότερη σκιά και animation για εναλλαγή χρωμάτων στο περίγραμμα. */
+.team-member:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 20px rgba(14, 13, 0.3);
+    animation: rainbow-border 3.5s linear infinite;
+}
+
+/* Εναλλάσσει τα χρώματα στο περίγραμμα, δημιουργώντας εφέ ουράνιου τόξου. */
+@keyframes rainbow-border {
+    0% {
+        border-color: red;
+    }
+
+    20% {
+        border-color: orange;
+    }
+
+    40% {
+        border-color: yellow;
+    }
+
+    60% {
+        border-color: green;
+    }
+
+    80% {
+        border-color: blue;
+    }
+
+    100% {
+        border-color: violet;
+    }
+}
+
+/* Στρογγυλεύει τις εικόνες και προσαρμόζει το μέγεθός τους. */
+.team-member img {
+    width: 35%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.team-member a {
+    text-decoration: none;
+}
+
+/* Ορίζει το στυλ για τα ονόματα των μελών. */
+.team-member h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.team-member p {
+    color: #666;
+}
+
+/* SIGN UP */
+
+/* Στυλ για τον τίτλο της φόρμας */
+.form_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ρυθμίσεις για τις εικόνες*/
+fieldset img {
+    position: relative;
+    top: 5px;
+    width: 10%;
+    height: auto;
+}
+
+/* Ρυθμίσεις για εικόνες φόρμας */
+#form_img {
+    width: 25%;
+    margin-bottom: -10px; 
+}
+
+/* Στυλ για το κουτί της φόρμας */
+form {
+    float: right;
+    width: 25%;
+    margin: auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    /* Slight transparency */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgb(61, 32, 228);
+}
+
+/* Ρυθμίσεις του στοιχείου legend*/
+legend {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+
+/* Δημιουργεί περιθώριο 20px στο κάτω μέρος του πεδίου (fieldset) για ευκρινή διάταξη και αφαιρεί το προεπιλεγμένο περίγραμμα. */
+fieldset {
+    margin-bottom: 20px;
+    border: none;
+}
+
+/* Κάνει τις ετικέτες (labels) να εμφανίζονται σε ξεχωριστή γραμμή  και προσθέτει περιθώριο 5px στο κάτω μέρος για διαχωρισμό από τα στοιχεία. */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+ /* Εξασφαλίζει ενιαία εμφάνιση για τα πεδία εισαγωγής (input), επιλογών (select) και περιοχής κειμένου (textarea).*/ 
+input{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/*Στυλ για το κουμπί*/
+.login-button {
+    cursor: pointer;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Αλλάζει το χρώμα του κουμπιού σε πιο σκούρο μπλε όταν ο χρήστης τοποθετεί το ποντίκι επάνω. */
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+/* Εμφανίζει τα στοιχεία που περιέχουν σφάλματα με κόκκινο περίγραμμα και ανοιχτό κόκκινο φόντο για ευδιάκριτη εμφάνιση. */
+.invalid {
+    border: 2px solid red;
+    background-color: #fdeeee;
+}
+
+/* Δημιουργεί ένα ευέλικτο container για τα πεδία κωδικών, εξασφαλίζοντας στοίχιση των στοιχείων σε οριζόντια διάταξη. */
+.password-field {
+    display: flex;
+    align-items: center;
+}
+
+/* Ορίζει το πεδίο εισαγωγής του κωδικού να καταλαμβάνει όσο το δυνατόν μεγαλύτερο πλάτος. */
+.password-field input {
+    flex: 1;
+}
+
+/*Ρυθμίζεις για τον button*/
+.password-field button {
+    background: none;
+    padding: 0;
+    border: none;
+    margin-left: 5px;
+}
+
+/* Προσαρμόζει το εικονίδιο που μπορεί να υπάρχει στο κουμπί ώστε να έχει πλάτος 20px και να ευθυγραμμίζεται σωστά. */
+.password-field button img {
+    width: 20px;
+    height: auto;
+    margin-top: -5px;
+}
+
+.cart-button  {
+    float: right;
+    margin-top: -50px;
+    border: none;
+    background: none;
+    width: 2.5vw;
+    padding: 0%;
+    
+}
+
+button :hover{
+    cursor: pointer;
+}
+
+.cart-button img {
+    width: 100%;
+    margin-top:0%;
+}
+
+
+.main-courses {
+    display:block;
+}
+
+#root table{
+    display: block;
+    width: 50%;
+    align-self: center;
+}
+
+#root table td{
+    width: 10%;
+    padding:10px 30px 10px 15px;
+}
+#root table th{
+    padding:10px 70px 10px 0px;
+}
+
+.remove-btn{
+    background-color: #c0c1c2;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.remove-btn:hover{
+    background-color: #ff5151;
+}
+
+#root p {
+    margin-top: 5%;
+    font-size: larger;
+    font-weight: bold;
+    color:  rgb(61, 32, 228);
+}
+
+.cart-message {
+    float: right;
+    margin-top: 8px;
+    font-size: 0.9em;
+}
