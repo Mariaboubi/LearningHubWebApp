@@ -1,6 +1,6 @@
 # LearningHub Web Application
 
-Web application for **Assignment 2** of the course *Web Technologies and Programming*, the project description is [here](webdev-assignment-2 - 2024-25-v1.pdf).
+Web application for the course *Web Technologies and Programming*, the full project description can be found [here](assignment-description.pdf)..
 
 The app connects to the [LearningHub API](https://learning-hub-1whk.onrender.com/) and provides:
 - Browsing of categories and subcategories of educational material.
@@ -30,10 +30,10 @@ cd LearningHubWebApp
 ```bash
 node index.js
 ```
-From a brawser open the page: 'http://localhost:8080/public/index.html'
+Then, open the following URL in your browser: 'http://localhost:8080/public/index.html'
 
 ## List of Usernames and Passwords
-
+The following users are preloaded in the application (defined in index.js, lines 11–18):
 - Username: `user1`  
   Password: `Password123!`
 
@@ -47,5 +47,3 @@ From a brawser open the page: 'http://localhost:8080/public/index.html'
   Password: `Aaaaa12!`
 
 ---
-
-They are saved in the index.js (line 11-18) in 'users' list.
